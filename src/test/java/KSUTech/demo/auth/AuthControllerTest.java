@@ -1,12 +1,10 @@
-package KSUTech.demo.user;
+package KSUTech.demo.auth;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.List;
-
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class UserControllerTest {
+public class AuthControllerTest {
 
     @Test
     public void 유저_저장(){
