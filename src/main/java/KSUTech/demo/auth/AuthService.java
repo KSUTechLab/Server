@@ -24,6 +24,10 @@ public class AuthService {
         this.userRepository = userRepository;
     }
 
+    public void createUser(User user){
+        userRepository.save(user);
+    }
+
     public String getKakaoAccessToken(String code) {
         String access_Token = "";
         String refresh_Token = "";
@@ -93,12 +97,12 @@ public class AuthService {
             System.out.println("responsebody  :  " + result);
 
             JsonElement element = JsonParser.parseString(result);
-            Long id = element.getAsJsonObject().get("id").getAsLong();
+            String id = element.getAsJsonObject().get("id").getAsString();
             String nickname = element.getAsJsonObject().get("properties").getAsJsonObject().get("nickname").getAsString();
             User user = User.builder()
                             .user_id(id)
                             .user_name(nickname)
-                            .userType(UserType.KAKAO)
+                            .userType("KAKAO")
                             .refresh_token("1234")
                             .build();
             userRepository.save(user);
